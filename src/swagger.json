@@ -1,36 +1,227 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "version": "1.0.0",
-        "title": "Jagaad Api",
-        "description": "Api for forcasting weather",
-        "license": {
-            "name": "MIT",
-            "url": "https://opensource.org/licenses/MIT"
-        }
-    },
-    "servers": [
-        {
-            "url": "/",
-            "description": "Welcome"
-        }
-    ],
-    "tags": [
-        {
-            "name": "Weather",
-            "description": "API for forcasting weather"
-        }
-    ],
-    "consumes": [
-        "application/json"
-    ],
-    "produces": [
-        "application/json"
-    ],
-    "paths": {
-        
-    },
-    "definitions": {
-        
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Jagaad Api",
+    "description": "Api for forcasting weather",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
     }
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "Welcome"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Weather",
+      "description": "API for forcasting weather"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/cities/forecasts": {
+      "get": {
+        "tag": [
+          "City"
+        ],
+        "description": "Fetch all cities forecasts for two days",
+        "responses": {
+          "200": {
+            "description": "Successfully fetched all cities forecast",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "city": {
+                            "type": "number"
+                          },
+                          "weather_today": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "statusCode": 200,
+                  "message": "successfully fetched all cities forccast",
+                  "data": [
+                    {
+                      "id": 1,
+                      "city": "Lagos",
+                      "weather_today": "sunny",
+                      "weather_tomorro": "rainy"
+                    },
+                    {
+                      "id": 1,
+                      "city": "Egypt",
+                      "weather_today": "sunny",
+                      "weather_tomorro": "rainy"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cities/{cityId}/forecasts": {
+      "post": {
+        "tag": [
+          "City"
+        ],
+        "description": "Set a particular city forecast",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cityId",
+            "description": "City id",
+            "type": "number",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Forecast payload",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Forecast"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created forcast",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "statusCode": 201,
+                  "message": "successfully created a forecast"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tag": [
+          "Forcast"
+        ],
+        "description": "Get forcast for a particular city",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cityId",
+            "description": "City id",
+            "type": "number",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully fetch forecast for city",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "weather_today": {
+                          "type": "string"
+                        },
+                        "weather_tomorro": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "statusCode": 201,
+                  "message": "successfully fetched city forecast",
+                  "data": {
+                    "id": 1,
+                    "weather_today": "sunny",
+                    "weather_tomorro": "sunny",
+                    "city": "Tokyo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Forecast": {
+      "required": [
+        "weather_today",
+        "weather_tomorro"
+      ],
+      "type": "object",
+      "properties": {
+        "weather_today": {
+          "type": "string"
+        },
+        "weather_tomorro": {
+          "type": "string"
+        }
+      }
+    }
+  }
 }

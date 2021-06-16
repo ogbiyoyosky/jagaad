@@ -9,6 +9,6 @@ export function CityRouter(options: ComponentRouterOptions<ICityController, any>
   /**
    * @fetchCities- fetch cities
    */
-  router.get('/', controller.fetchCitiesWithForecast);
+  router.get('/forecasts', controller.fetchCitiesWithForecast);
   return router;
 }

@@ -3,7 +3,6 @@ import httpStatus from 'http-status';
 import logger from '../../logger';
 import { CityService } from './city.service';
 
-
 export interface ICityController {
   fetchCitiesWithForecast: RequestHandler;
 }
