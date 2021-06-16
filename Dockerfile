@@ -4,7 +4,6 @@ FROM node:12
 WORKDIR '/app'
 
 COPY package*.json ./
-RUN npm i -g knex
 
 RUN npm i
 
