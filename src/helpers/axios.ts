@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-const apiRequest = axios.create({
-    baseURL: 'https://swapi.dev/api/'
-});
+const apiRequest = axios.create({});
 
 export default apiRequest;
-

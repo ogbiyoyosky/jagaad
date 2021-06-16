@@ -1,10 +1,8 @@
+/* eslint-disable */
 const winston = require('winston');
 import dotenv from "dotenv"
 dotenv.config()
-
-const { ElasticsearchTransport } = require('winston-elasticsearch');
-
-
+import { ElasticsearchTransport } from 'winston-elasticsearch'
 
 const esTransportOpts = {
   level: 'info',
@@ -12,7 +10,7 @@ const esTransportOpts = {
   clientOpts: { node: process.env.ELASTICSEARCH_URL }
 };
 
-const esTransport = new ElasticsearchTransport(esTransportOpts);
+const esTransport: any = new ElasticsearchTransport(esTransportOpts);
 
 const colors = {
   error: 'red',
@@ -56,7 +54,7 @@ const logConfiguration = {
 const logger = winston.createLogger(logConfiguration);
 
 logger.stream = {
-  write: function(message, encoding) {
+  write: function(message) {
     // use the 'info' log level so the output will be picked up by both transports (file and console)
     logger.info(message);
   },

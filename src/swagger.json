@@ -1,0 +1,36 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Jagaad Api",
+        "description": "Api for forcasting weather",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "servers": [
+        {
+            "url": "/",
+            "description": "Welcome"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Weather",
+            "description": "API for forcasting weather"
+        }
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        
+    },
+    "definitions": {
+        
+    }
+}
