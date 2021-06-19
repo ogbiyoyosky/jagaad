@@ -1,5 +1,7 @@
 # Jagaad API
 
+# Name: Emmanuel Ogbiyoyo
+
 This application allows you to get forcast of cities from a third party API.
 
 # STEPS TO RUN APP
