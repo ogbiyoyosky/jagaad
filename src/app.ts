@@ -12,7 +12,7 @@ import swaggerUi from 'swagger-ui-express';
 import * as swaggerDocument from './swagger.json';
 const app = express();
 
-app.use(morgan('combined', { stream: logger.stream }));
+// app.use(morgan('combined', { stream: logger.stream }));
 app.use(compression());
 app.use(cookieParser());
 // initalize passport
@@ -39,7 +39,7 @@ app.use(function (req, res) {
 });
 
 app.use((err: ApplicationError, req: Request, res: Response, next: NextFunction) => {
-  //logger.info(`request>>${JSON.stringify(req.body)}`)
+  logger.info(`request>>${JSON.stringify(req.body)}`);
   if (res.headersSent) {
     return next(err);
   }

@@ -15,7 +15,7 @@ export function CityControllerFactory(cityService: CityService): ICityController
     async fetchCitiesWithForecast(req: Request, res: Response, next: NextFunction): Promise<any> {
       try {
         const cities = await cityService.fetchCitiesWithForecast();
-        //logger.info(JSON.stringify(films))
+        logger.info(JSON.stringify(cities));
         return res.status(httpStatus.OK).json({
           message: 'Successfully fetch cities',
           status: 'success',

@@ -74,13 +74,13 @@
                       "id": 1,
                       "city": "Lagos",
                       "weather_today": "sunny",
-                      "weather_tomorro": "rainy"
+                      "weather_tomorrow": "rainy"
                     },
                     {
                       "id": 1,
                       "city": "Egypt",
                       "weather_today": "sunny",
-                      "weather_tomorro": "rainy"
+                      "weather_tomorrow": "rainy"
                     }
                   ]
                 }
@@ -183,7 +183,7 @@
                         "weather_today": {
                           "type": "string"
                         },
-                        "weather_tomorro": {
+                        "weather_tomorrow": {
                           "type": "string"
                         }
                       }
@@ -196,7 +196,7 @@
                   "data": {
                     "id": 1,
                     "weather_today": "sunny",
-                    "weather_tomorro": "sunny",
+                    "weather_tomorrow": "sunny",
                     "city": "Tokyo"
                   }
                 }
@@ -211,14 +211,14 @@
     "Forecast": {
       "required": [
         "weather_today",
-        "weather_tomorro"
+        "weather_tomorrow"
       ],
       "type": "object",
       "properties": {
         "weather_today": {
           "type": "string"
         },
-        "weather_tomorro": {
+        "weather_tomorrow": {
           "type": "string"
         }
       }
